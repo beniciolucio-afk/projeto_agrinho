@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produzir com Mais Responsabilidade</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>🌱 Produzir com Mais Responsabilidade</h1>
+    <p>Pequenas ações geram grandes mudanças no mundo.</p>
+  </header>
+
+  <main>
+
+    <section class="card">
+      <h2>📋 Checklist de Responsabilidade</h2>
+
+      <label><input type="checkbox" class="task"> Evitar desperdício de materiais</label>
+      <label><input type="checkbox" class="task"> Reutilizar recursos sempre que possível</label>
+      <label><input type="checkbox" class="task"> Pensar no impacto ambiental</label>
+      <label><input type="checkbox" class="task"> Produzir com consciência social</label>
+
+      <button onclick="verificarProgresso()">Ver meu progresso</button>
+      <p id="resultado"></p>
+    </section>
+
+    <section class="card">
+      <h2>💡 Dicas rápidas</h2>
+
+      <button onclick="mostrarDica()">Mostrar dica do dia</button>
+      <p id="dica"></p>
+    </section>
+
+    <section class="card">
+      <h2>✍️ Seu compromisso</h2>
+      <p>Escreva como você vai produzir de forma mais responsável:</p>
+      <textarea id="compromisso" placeholder="Digite aqui..."></textarea>
+      <button onclick="salvarCompromisso()">Salvar</button>
+
+      <p id="salvo"></p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Feito para incentivar responsabilidade na produção 🌍</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
