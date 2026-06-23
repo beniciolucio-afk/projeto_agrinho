@@ -37,10 +37,10 @@ function calcularPegada() {
   let mensagem = '';
   let cor = '';
 
-  if (pegada < 50) {
+  if (pegada < 100) {
     cor = 'text-emerald-400';
     mensagem = `🌱 Excelente! Pegada baixa (${pegada} t CO₂/ano)`;
-  } else if (pegada < 120) {
+  } else if (pegada < 240) {
     cor = 'text-yellow-400';
     mensagem = `⚖️ Pegada moderada (${pegada} t CO₂/ano)`;
   } else {
