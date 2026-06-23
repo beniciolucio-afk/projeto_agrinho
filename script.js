@@ -1,57 +1,64 @@
-function verificarProgresso() {
-  const tarefas = document.querySelectorAll(".task");
-  let feitas = 0;
+// Simulador de Equilíbrio
+const producaoSlider = document.getElementById('producao');
+const preservacaoSlider = document.getElementById('preservacao');
+const valProducao = document.getElementById('val-producao');
+const valPreservacao = document.getElementById('val-preservacao');
+const resultado = document.getElementById('resultado');
 
-  tarefas.forEach(t => {
-    if (t.checked) feitas++;
-  });
+function atualizarSimulador() {
+  const prod = parseInt(producaoSlider.value);
+  const pres = parseInt(preservacaoSlider.value);
+  
+  valProducao.textContent = prod + "%";
+  valPreservacao.textContent = pres + "%";
 
-  const resultado = document.getElementById("resultado");
-
-  if (feitas === tarefas.length) {
-    resultado.textContent = "🌟 Excelente! Você está produzindo com responsabilidade!";
+  const diferenca = Math.abs(prod - pres);
+  
+  if (diferenca <= 15) {
+    resultado.innerHTML = `🌟 <span class="text-emerald-400">EXCELENTE EQUILÍBRIO!</span>`;
+  } else if (diferenca <= 35) {
+    resultado.innerHTML = `⚖️ <span class="text-yellow-400">Bom equilíbrio</span>`;
   } else {
-    resultado.textContent = `Você completou ${feitas} de ${tarefas.length} ações. Continue evoluindo!`;
+    resultado.innerHTML = `⚠️ <span class="text-orange-400">Desequilíbrio</span>`;
   }
 }
 
-function mostrarDica() {
-  const dicas = [
-    "Reutilize materiais antes de comprar novos.",
-    "Reduza o consumo de energia sempre que possível.",
-    "Prefira fornecedores sustentáveis.",
-    "Evite desperdício de recursos naturais.",
-    "Pense no impacto do seu produto no futuro."
-  ];
+producaoSlider.addEventListener('input', atualizarSimulador);
+preservacaoSlider.addEventListener('input', atualizarSimulador);
 
-  // embaralhar dicas
-  const dicasEmbaralhadas = dicas.sort(() => 0.5 - Math.random());
+// Calculadora de Pegada de Carbono
+function calcularPegada() {
+  const hectares = parseInt(document.getElementById('hectares').value);
+  const fertilizantes = parseInt(document.getElementById('fertilizantes').value);
+  const gado = parseInt(document.getElementById('gado').value);
 
-  // pegar 3 primeiras
-  const selecionadas = dicasEmbaralhadas.slice(0, 3);
+  let pegada = (hectares * 2) + fertilizantes + gado;
+  
+  let mensagem = '';
+  let cor = '';
 
-  // mostrar na tela
-  document.getElementById("dica").innerHTML =
-    "💡 <br>" + selecionadas.map(d => "• " + d).join("<br>");
-}
-
-
-function salvarCompromisso() {
-  const texto = document.getElementById("compromisso").value;
-  const aviso = document.getElementById("salvo");
-
-  if (texto.trim() === "") {
-    aviso.textContent = "Escreva algo antes de salvar!";
+  if (pegada < 50) {
+    cor = 'text-emerald-400';
+    mensagem = `🌱 Excelente! Pegada baixa (${pegada} t CO₂/ano)`;
+  } else if (pegada < 120) {
+    cor = 'text-yellow-400';
+    mensagem = `⚖️ Pegada moderada (${pegada} t CO₂/ano)`;
   } else {
-    localStorage.setItem("compromisso", texto);
-    aviso.textContent = "✔ Compromisso salvo com sucesso!";
+    cor = 'text-orange-400';
+    mensagem = `⚠️ Pegada alta (${pegada} t CO₂/ano)`;
   }
+
+  document.getElementById('resultado-carbono').innerHTML = `
+    <span class="${cor}">${mensagem}</span>
+  `;
 }
 
-// carregar compromisso salvo
-window.onload = function () {
-  const salvo = localStorage.getItem("compromisso");
-  if (salvo) {
-    document.getElementById("compromisso").value = salvo;
-  }
+// Atualiza valor dos hectares
+document.getElementById('hectares').addEventListener('input', function() {
+  document.getElementById('val-hectares').textContent = this.value + " hectares";
+});
+
+// Inicializar
+window.onload = () => {
+  atualizarSimulador();
 };

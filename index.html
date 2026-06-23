@@ -1,52 +1,168 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Produzir com Mais Responsabilidade</title>
+  <title>Agro Forte | Futuro Sustentável 2026</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="bg-gradient-to-br from-green-950 via-emerald-950 to-teal-950 text-white font-sans">
 
-  <header>
-    <h1>🌱 Produzir com Mais Responsabilidade</h1>
-    <p>Pequenas ações geram grandes mudanças no mundo.</p>
-  </header>
+  <!-- Navbar -->
+  <nav class="fixed top-0 w-full bg-black/90 backdrop-blur-lg z-50 border-b border-emerald-700">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <i class="fa-solid fa-leaf text-4xl text-emerald-400"></i>
+        <h1 class="text-3xl font-bold">Agro <span class="text-emerald-400">Forte</span></h1>
+      </div>
+      <div class="hidden md:flex gap-8 text-lg">
+        <a href="#home" class="hover:text-emerald-400 transition">Início</a>
+        <a href="#equilibrio" class="hover:text-emerald-400 transition">Equilíbrio</a>
+        <a href="#simulador" class="hover:text-emerald-400 transition">Simulador</a>
+        <a href="#ideias" class="hover:text-emerald-400 transition">Ideias</a>
+        <a href="#carbono" class="hover:text-emerald-400 transition">Pegada de Carbono</a>
+      </div>
+    </div>
+  </nav>
 
-  <main>
+  <!-- Hero -->
+  <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1625246333192-1f5c3b9c8b5e')] bg-cover bg-center opacity-40"></div>
+    <div class="max-w-5xl mx-auto text-center px-6 relative z-10">
+      <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6">
+        AGRO FORTE<br>
+        <span class="text-emerald-400">FUTURO SUSTENTÁVEL</span>
+      </h1>
+      <p class="text-2xl md:text-3xl mb-10 max-w-3xl mx-auto">
+        Equilíbrio entre Produção e Meio Ambiente
+      </p>
+      <div class="flex flex-wrap gap-6 justify-center">
+        <a href="#simulador" class="bg-emerald-500 hover:bg-emerald-600 px-10 py-5 rounded-2xl text-xl font-bold transition transform hover:scale-105">
+          Testar Equilíbrio
+        </a>
+        <a href="#carbono" class="border-2 border-emerald-400 hover:bg-emerald-400/10 px-10 py-5 rounded-2xl text-xl font-bold transition">
+          Calcular Pegada de Carbono
+        </a>
+      </div>
+    </div>
+  </section>
 
-    <section class="card">
-      <h2>📋 Checklist de Responsabilidade</h2>
+  <!-- Equilíbrio -->
+  <section id="equilibrio" class="py-20 bg-black/60">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-16">O Equilíbrio Perfeito</h2>
+      <div class="grid md:grid-cols-3 gap-10">
+        <div class="text-center bg-green-900/30 p-10 rounded-3xl border border-emerald-700">
+          <i class="fa-solid fa-tractor text-6xl text-emerald-400 mb-6"></i>
+          <h3 class="text-2xl font-bold mb-4">Produção Forte</h3>
+          <p class="text-gray-300">Tecnologia e alta produtividade</p>
+        </div>
+        <div class="text-center bg-green-900/30 p-10 rounded-3xl border border-emerald-700">
+          <i class="fa-solid fa-tree text-6xl text-emerald-400 mb-6"></i>
+          <h3 class="text-2xl font-bold mb-4">Meio Ambiente</h3>
+          <p class="text-gray-300">Preservação e biodiversidade</p>
+        </div>
+        <div class="text-center bg-green-900/30 p-10 rounded-3xl border border-emerald-700">
+          <i class="fa-solid fa-scale-balanced text-6xl text-emerald-400 mb-6"></i>
+          <h3 class="text-2xl font-bold mb-4">Equilíbrio</h3>
+          <p class="text-gray-300">Desenvolvimento sustentável</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <label><input type="checkbox" class="task"> Evitar desperdício de materiais</label>
-      <label><input type="checkbox" class="task"> Reutilizar recursos sempre que possível</label>
-      <label><input type="checkbox" class="task"> Pensar no impacto ambiental</label>
-      <label><input type="checkbox" class="task"> Produzir com consciência social</label>
+  <!-- Simulador -->
+  <section id="simulador" class="py-20">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-12">🌱 Simulador de Equilíbrio Agroambiental</h2>
+      <div class="bg-black/70 border border-emerald-700 rounded-3xl p-10">
+        <p class="text-center mb-8 text-lg">Ajuste os valores e veja o impacto:</p>
+        <div class="space-y-8">
+          <div>
+            <label class="block mb-2">Produção Agrícola (%)</label>
+            <input type="range" id="producao" min="0" max="100" value="70" class="w-full accent-emerald-400">
+            <span id="val-producao" class="text-emerald-400 font-bold">70%</span>
+          </div>
+          <div>
+            <label class="block mb-2">Preservação Ambiental (%)</label>
+            <input type="range" id="preservacao" min="0" max="100" value="60" class="w-full accent-emerald-400">
+            <span id="val-preservacao" class="text-emerald-400 font-bold">60%</span>
+          </div>
+        </div>
+        <div id="resultado" class="mt-10 text-center text-2xl font-bold"></div>
+      </div>
+    </div>
+  </section>
 
-      <button onclick="verificarProgresso()">Ver meu progresso</button>
-      <p id="resultado"></p>
-    </section>
+  <!-- Ideias -->
+  <section id="ideias" class="py-20 bg-black/60">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-12">Ideias de Projetos 2026</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-gradient-to-br from-emerald-900 to-teal-900 p-8 rounded-3xl">
+          <h3 class="text-2xl font-bold mb-3">Irrigação Inteligente</h3>
+          <p class="text-gray-300">Economia de água com sensores e automação.</p>
+        </div>
+        <div class="bg-gradient-to-br from-emerald-900 to-teal-900 p-8 rounded-3xl">
+          <h3 class="text-2xl font-bold mb-3">Recuperação de Solo</h3>
+          <p class="text-gray-300">Técnicas sustentáveis para solo degradado.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section class="card">
-      <h2>💡 Dicas rápidas</h2>
+  <!-- Pegada de Carbono -->
+  <section id="carbono" class="py-20">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-6">🌍 Pegada de Carbono</h2>
+      <p class="text-center text-xl mb-12 max-w-3xl mx-auto">
+        Calcule o impacto ambiental estimado do seu projeto agrícola.
+      </p>
 
-      <button onclick="mostrarDica()">Mostrar dica do dia</button>
-      <p id="dica"></p>
-    </section>
+      <div class="bg-black/70 border border-emerald-700 rounded-3xl p-10 max-w-2xl mx-auto">
+        <div class="space-y-8">
+          <div>
+            <label class="block mb-3 font-medium">Quantos hectares?</label>
+            <input type="range" id="hectares" min="1" max="100" value="10" class="w-full accent-emerald-400">
+            <span id="val-hectares" class="text-emerald-400 font-bold block text-center">10 hectares</span>
+          </div>
 
-    <section class="card">
-      <h2>✍️ Seu compromisso</h2>
-      <p>Escreva como você vai produzir de forma mais responsável:</p>
-      <textarea id="compromisso" placeholder="Digite aqui..."></textarea>
-      <button onclick="salvarCompromisso()">Salvar</button>
+          <div>
+            <label class="block mb-3 font-medium">Uso de fertilizantes químicos</label>
+            <select id="fertilizantes" class="w-full bg-green-950 border border-emerald-700 rounded-2xl px-6 py-4">
+              <option value="0">Não uso</option>
+              <option value="50" selected>Baixo</option>
+              <option value="150">Médio</option>
+              <option value="300">Alto</option>
+            </select>
+          </div>
 
-      <p id="salvo"></p>
-    </section>
+          <div>
+            <label class="block mb-3 font-medium">Criação de gado?</label>
+            <select id="gado" class="w-full bg-green-950 border border-emerald-700 rounded-2xl px-6 py-4">
+              <option value="0">Não</option>
+              <option value="50" selected>Sim (pequeno)</option>
+              <option value="150">Sim (alto)</option>
+            </select>
+          </div>
+        </div>
 
-  </main>
+        <button onclick="calcularPegada()" 
+                class="mt-10 w-full bg-emerald-500 hover:bg-emerald-600 py-6 rounded-2xl text-xl font-bold transition">
+          Calcular Pegada de Carbono
+        </button>
 
-  <footer>
-    <p>Feito para incentivar responsabilidade na produção 🌍</p>
+        <div id="resultado-carbono" class="mt-8 text-center text-2xl font-bold min-h-[100px]"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-black py-12 text-center border-t border-emerald-900">
+    <p class="text-emerald-400 text-xl">Agro Forte • Futuro Sustentável 2026</p>
+    <p class="text-sm text-gray-500 mt-2">1º Ano do Ensino Médio</p>
   </footer>
 
   <script src="script.js"></script>
